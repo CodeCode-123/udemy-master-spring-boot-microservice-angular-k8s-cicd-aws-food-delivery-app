@@ -14,8 +14,7 @@ pipeline {
   stages {
     stage('Install Dependencies') {
       steps {
-        // Install the package as root before running npm tasks
-        sh 'apt-get update && apt-get install -y libatomic1'
+        // Intall dependencies
         sh 'npm ci'
       }
     }
