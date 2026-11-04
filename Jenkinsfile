@@ -45,7 +45,7 @@ pipeline {
         script {
           // Set the new image tag with the Jenkins build number
           sh '''
-            sed -i "s/image:./image: codecode123\\/food-delivery-app-fe-arm-cicd:${VERSION}/" k8s/angular-manifest.yaml
+            sed -i "s/image:./image: codecode123\\/food-delivery-app-fe-arm-cicd:${VERSION}/" frontend/angular-manifest.yaml
             '''
           sh 'git checkout main'
           sh 'git add .'
