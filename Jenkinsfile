@@ -9,9 +9,16 @@ pipeline {
     DOCKER_REGISTRY = "docker.io"
     DOCKER_CREDENTIALS = credentials('DOCKER_HUB_CREDENTIAL')
     VERSION = "${env.BUILD_ID}"
+    PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:${env.PATH}"
   }
 
   stages {
+    stage('Build') {
+      steps {
+        sh 'docker --version'
+      }
+    }
+
     stage('Install Dependencies') {
       steps {
         // Intall dependencies
@@ -46,11 +53,11 @@ pipeline {
         script {
           // Set the new image tag with the Jenkins build number
           sh '''
-            sed -i "s/image:./image: codecode123\\/food-delivery-app-fe-arm-cicd:${VERSION}/" frontend/angular-manifest.yaml
+            sed "s/image:./image: codecode123\\/food-delivery-app-fe-arm-cicd:${VERSION}/" angular-manifest.yaml
             '''
           sh 'git checkout main'
           sh 'git add .'
-          sh 'git commit -m "Update image tag"'
+          sh 'git commit -m "Update image tag" || true'
           sshagent(['git-ssh']) {
             sh('git push')
           }
