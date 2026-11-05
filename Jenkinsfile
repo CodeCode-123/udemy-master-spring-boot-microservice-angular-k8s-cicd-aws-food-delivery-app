@@ -7,7 +7,6 @@ pipeline {
 
   environment {
     DOCKER_REGISTRY = "docker.io"
-//     DOCKER_CREDENTIALS = credentials('DOCKER_HUB_CREDENTIAL')
     VERSION = "${env.BUILD_ID}"
     PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:${env.PATH}"
   }
@@ -49,7 +48,6 @@ pipeline {
 
     stage('Docker Build and Push') {
       steps {
-//         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         sh 'docker build -t codecode123/food-delivery-app-fe-arm-cicd:${VERSION} .'
         sh 'docker push codecode123/food-delivery-app-fe-arm-cicd:${VERSION}'
       }
