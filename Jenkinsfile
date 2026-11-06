@@ -67,7 +67,7 @@ pipeline {
             sshagent(['git-ssh']) {
                 // Set the new image tag with the Jenkins build number
                 sh '''
-                  sed -i '' "s/image:./image: codecode123\\/food-delivery-app-fe-arm-cicd:${VERSION}/g" angular-manifest.yaml
+                  sed -i '' "s/image:.*/image: codecode123\\/food-delivery-app-fe-arm-cicd:${VERSION}/g" angular-manifest.yaml
                 '''
                 sh 'git stash'
                 sh 'git checkout main'
@@ -77,7 +77,6 @@ pipeline {
                 sh 'git push origin HEAD:main'
               }
         }
-
       }
     }
   }
