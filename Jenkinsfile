@@ -71,6 +71,7 @@ pipeline {
                 '''
                 sh 'git stash'
                 sh 'git checkout main'
+                sh 'git pull origin main'
                 sh 'git stash pop'
                 sh 'git add angular-manifest.yaml'
                 sh 'git commit -m "Update image tag [skip ci]" || true'
