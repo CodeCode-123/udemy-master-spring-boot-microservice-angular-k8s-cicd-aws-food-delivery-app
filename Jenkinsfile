@@ -76,7 +76,7 @@ pipeline {
                 sh 'git add angular-manifest.yaml'
                 sh 'git commit -m "Update image tag [skip ci]" || true'
                 sh 'git push origin HEAD:main'
-              }
+            }
         }
       }
     }
