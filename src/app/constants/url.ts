@@ -5,4 +5,6 @@
 
 // export const K8ExternalIp = 'k8s-default-awsingre-9aa4c55379-1554860328.us-east-1.elb.amazonaws.com';
 // export const K8ExternalIp = 'http://localhost:4300';
+
+
 export const K8ExternalIp = 'http://localhost';
